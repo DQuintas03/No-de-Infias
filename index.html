@@ -264,7 +264,8 @@ button{cursor:pointer}
 .ltop .plink{margin:0;background:#fff;color:var(--ink);border:1px solid var(--line)}
 .lwhen{display:grid;gap:2px;margin-top:8px;padding:8px 10px;border-radius:10px;background:#e8efff;border:1px solid #c9d8ff;font-size:11.5px;color:#27407a}
 .lwhen b{font-size:13px;color:#0b3a8f}
-.lwhen .plink{justify-self:start;margin-top:6px;padding:4px 9px;background:#fff;color:#0b3a8f;border:1px solid #c9d8ff}
+.lbtns{display:flex;gap:6px;flex-wrap:wrap}
+.lwhen .plink{margin-top:6px;padding:4px 9px;background:#fff;color:#0b3a8f;border:1px solid #c9d8ff}
 .lsum{font-size:13px;margin:4px 0 2px}
 .lsum b{font-size:16px}
 .lleg{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:11px;color:var(--mut);margin:4px 0 8px}
@@ -356,13 +357,13 @@ button{cursor:pointer}
 @media (max-width:980px){
   :root{--panelW:0px}
   .diag,#diagBtn{display:none!important}
-  .panel{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:66vh}
-  .handle{display:flex;align-items:center;justify-content:space-between;width:100%;border:0;background:transparent;padding:9px 14px 2px;
-    font-weight:800;font-size:12.5px;color:var(--mut)}
+  .panel{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:58vh}
+  .handle{position:relative;display:flex;align-items:center;justify-content:space-between;width:100%;border:0;background:transparent;padding:16px 16px 10px;
+    font-weight:800;font-size:13px;color:var(--ink);touch-action:none}
+  .handle:before{content:"";position:absolute;left:50%;top:6px;width:38px;height:4px;margin-left:-19px;border-radius:4px;background:#b7c8d2}
   .handle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
   .panel.open .handle svg{transform:rotate(180deg)}
-  .panel:not(.open) .ptabs,.panel:not(.open) .xtra{display:none}
-  .panel:not(.open) .pscroll{overflow:hidden;padding-top:4px}
+  .panel:not(.open) .ptabs,.panel:not(.open) .xtra,.panel:not(.open) .pscroll{display:none}
   .panel:not(.open) .strip{display:none}
   .rows li{flex-wrap:wrap;min-width:0}
   .rows li.first em{flex-basis:100%;margin:-2px 0 0}
@@ -376,6 +377,10 @@ button{cursor:pointer}
   .jsel button small{display:none}
   .jres .bhead small{display:none}
   .panel:not(.open) .jr{display:none}
+  .lwhen{padding:7px 9px}
+  .lwhen>span{display:none}
+  .lbtns{flex-wrap:nowrap}
+  .lbtns .plink{flex:1;margin-top:4px;padding:5px 6px;font-size:11px}
   .panel:not(.open) .rows li:nth-child(n+3){display:none}
   .rows li:nth-child(n+4){display:none}
   .panel.open .rows li:nth-child(n+4){display:flex}
@@ -1099,8 +1104,8 @@ function renderLig(force){
   }
   const res=ligCompute(),t=ligT();ligRes=res;
   const quando=lg.at!=null
-    ?`<div class="lwhen"><b>Ao chegar às ${fmt(t)}</b><span>${lg.ctx}</span><button type="button" class="plink" id="ligNow">Usar a hora da simulação</button></div>`
-    :`<div class="lwhen"><b>A partir das ${fmt(t)}</b><span>até às ${fmt(t+lg.W)}, já descontado o tempo a pé</span></div>`;
+    ?`<div class="lwhen"><b>${lg.ctx?'Ao chegar às ':'Para as '}${fmt(t)}</b><span>${lg.ctx||'hora em que escolheste a paragem'} · simulação em pausa nesta hora</span><div class="lbtns"><button type="button" class="plink" id="ligFollow">Retomar a simulação</button><button type="button" class="plink" id="ligNow">Usar a hora do relógio</button></div></div>`
+    :`<div class="lwhen"><b>A seguir o relógio · ${fmt(t)}</b><span>a lista muda com a simulação, até às ${fmt(t+lg.W)}</span><div class="lbtns"><button type="button" class="plink" id="ligFix">Fixar e pausar</button></div></div>`;
   let corpo='';
   if(res.nPart>0||res.groups.length){
     const resumo=`<div class="lsum"><b>${res.nLinhas}</b> ${res.nLinhas===1?'linha':'linhas'} · <b>${res.nPart}</b> ${res.nPart===1?'partida apanhável':'partidas apanháveis'} nos próximos ${lg.W} min</div>`;
@@ -1194,10 +1199,18 @@ function selectStop(code,opts){
   const st=LIG&&LIG.stops.find(x=>x.c===code);if(!st)return;
   const hb=HUBS.find(x=>x.c===st.c);
   lg.sel={c:st.c,n:hb?hb.name:st.n,p:st.p,st};
-  lg.at=opts&&opts.at!=null?opts.at:null;lg.ctx=opts&&opts.ctx||'';
+  lg.at=opts&&opts.at!=null?opts.at:state.t;lg.ctx=opts&&opts.ctx||'';
+  play(false);                                   // a simulação pára, para o mapa e a lista mostrarem a mesma hora
+  if(opts&&opts.at!=null)setT(opts.at);
   if(map)map.closePopup();
   showTab('lig');
-  if(innerWidth<=980){$('panel').classList.add('open');$('handle').setAttribute('aria-expanded','true')}
+  if(innerWidth<=980&&map){
+    $('panel').classList.add('open');$('handle').setAttribute('aria-expanded','true');
+    setTimeout(()=>{
+      const sh=$('panel').offsetHeight,head=$('top').offsetHeight,vis=innerHeight-sh-20,pt=map.latLngToContainerPoint([lg.sel.p[1],lg.sel.p[0]]),alvo=head+(vis-head)*.5;
+      if(pt.y>vis-50||pt.y<head+30)map.panBy([0,pt.y-alvo]);
+    },90);
+  }
   renderLig(true);
 }
 function ligClear(){lg.sel=null;lg.at=null;lg.ctx='';renderLig(true)}
@@ -1206,7 +1219,9 @@ function initLig(){
   const box=$('ligBox');
   box.onclick=e=>{
     if(e.target.closest('#ligClear')){ligClear();return}
-    if(e.target.closest('#ligNow')){lg.at=null;lg.ctx='';renderLig(true);return}
+    if(e.target.closest('#ligNow')){lg.at=state.t;lg.ctx='';renderLig(true);return}
+    if(e.target.closest('#ligFollow')){lg.at=null;lg.ctx='';play(true);renderLig(true);return}
+    if(e.target.closest('#ligFix')){lg.at=state.t;play(false);renderLig(true);return}
     if(e.target.closest('#ligWiden')){lg.W=15;renderLig(true);return}
     const b=e.target.closest('.seg [data-v]');
     if(b){lg[b.closest('.seg').dataset.seg]=+b.dataset.v;renderLig(true);return}
@@ -1319,8 +1334,19 @@ function buildUi(){
   $('handle').onclick=()=>{
     const p=$('panel'),o=!p.classList.contains('open');p.classList.toggle('open',o);
     $('handle').setAttribute('aria-expanded',String(o));
-    if(!o)showTab('viagens');
   };
+  // arrastar a barra: para cima abre, para baixo fecha
+  (function(){
+    const hd=$('handle');let y0=null;
+    hd.addEventListener('touchstart',e=>{y0=e.touches[0].clientY},{passive:true});
+    hd.addEventListener('touchend',e=>{
+      if(y0==null)return;
+      const dy=e.changedTouches[0].clientY-y0;y0=null;
+      if(Math.abs(dy)<28)return;
+      e.preventDefault();
+      const p=$('panel');p.classList.toggle('open',dy<0);hd.setAttribute('aria-expanded',String(dy<0));
+    });
+  })();
 
   // estrada: arrastar o autocarro (ou clicar na estrada) muda a hora
   const road=$('road'),bus=$('rbus');let drag=false;
