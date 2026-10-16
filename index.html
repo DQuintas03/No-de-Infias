@@ -1119,7 +1119,7 @@ function renderLig(force){
   box.innerHTML=`<div class="ltop"><div class="bhead" style="margin:0"><div><h3>${lg.sel.n}</h3><small>Paragem selecionada</small></div></div><button type="button" class="plink" id="ligClear">Limpar</button></div>${quando}${ctl}${corpo}${nota}`;
   drawLig(res);
 }
-/* caminho a pé: polyline codificada (precisão 5) calculada por ferramentas/calcular-caminhos.js */
+/* caminho a pé: polyline codificada (precisão 5) */
 function decodePoly(str){
   let i=0,lat=0,lng=0;const out=[];
   while(i<str.length){
