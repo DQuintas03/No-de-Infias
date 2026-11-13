@@ -103,12 +103,11 @@ button{cursor:pointer}
 .road:before{content:"";position:absolute;left:0;right:0;top:34px;border-top:2px dashed rgba(255,255,255,.4)}
 .rt{position:absolute;top:0;width:1px;height:6px;background:rgba(255,255,255,.55)}
 .rl{position:absolute;top:5px;transform:translateX(-50%);font-size:9.5px;color:#d3e8f3;font-variant-numeric:tabular-nums}
-.rbus{position:absolute;bottom:3px;left:calc((100% - 70px)*var(--f,0));width:70px;height:26px;cursor:grab;filter:drop-shadow(0 2px 3px rgba(0,20,40,.45))}
+.rbus{position:absolute;bottom:3px;left:calc((100% - 96px)*var(--f,0));width:96px;height:25px;cursor:grab;filter:drop-shadow(0 2px 3px rgba(0,20,40,.45))}
 .rbus:active{cursor:grabbing}
-.rbus svg{display:block;width:70px;height:26px;overflow:visible}
-.rbus .busBody{fill:#fff}.rbus .busStripe{fill:#047cb4}.rbus .busWin{fill:#0c3a58}.rbus .busDoor{fill:#0c3a58;opacity:.8}
-.rbus .busSign{fill:#ffc94a}.rbus .busLight{fill:#ffe39a}.rbus .busWheel circle{fill:#10283a}.rbus .busWheel .hub{fill:#c9d6de}
-.rbus .busWheel .spoke{stroke:#10283a;stroke-width:1}
+.rbus svg{display:block;width:96px;height:25px;overflow:visible}
+.rbus .busLogo .r{fill:#e8394d}.rbus .busLogo .b{fill:#1ea3e6}
+.rbus .busWheel circle{fill:none;stroke:#eef3f6;stroke-width:.8}.rbus .busWheel .spoke{stroke:#d3dce1;stroke-width:1.1;fill:none}
 .rbus .busWheel{transform-box:fill-box;transform-origin:center;animation:wheelSpin .7s linear infinite;animation-play-state:paused}
 .top.playing .rbus .busWheel{animation-play-state:running}
 @keyframes wheelSpin{to{transform:rotate(360deg)}}
@@ -136,27 +135,28 @@ button{cursor:pointer}
 .busw{width:0!important;height:0!important}
 
 .term{position:relative;width:0;height:0}
-.term .arc{position:absolute;left:-23px;top:-23px;width:46px;height:46px;transform:rotate(-90deg);overflow:visible}
-.term .arc circle{fill:none;stroke-width:5}
-.term .arc .trk{stroke:rgba(13,39,64,.16)}
-.term .arc .prg{stroke:var(--pc,#0d2740);stroke-linecap:round;stroke-dasharray:119.4;stroke-dashoffset:119.4}
-.term .ring{position:absolute;left:-12px;top:-12px;width:24px;height:24px;border-radius:50%;background:#fff;border:5px solid #0b2a40;box-shadow:0 3px 10px rgba(0,0,0,.4)}
-.term .ring:after{content:"";position:absolute;inset:-14px;border-radius:50%;border:3px solid var(--pc,#fff);opacity:0}
+.term .arc{position:absolute;left:-15px;top:-15px;width:30px;height:30px;transform:rotate(-90deg);overflow:visible}
+.term .arc circle{fill:none;stroke-width:3}
+.term .arc .trk{stroke:rgba(13,39,64,.10)}
+.term .arc .prg{stroke:var(--pc,#0d2740);stroke-linecap:round;stroke-dasharray:78.5;stroke-dashoffset:78.5}
+.term .ring{position:absolute;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;background:#fff;border:3.5px solid #0b2a40;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.term .ring:after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--pc,#fff);opacity:0}
 .term.fire .ring:after{animation:fire 1.7s ease-out}
 @keyframes fire{0%{opacity:.95;transform:scale(.6)}100%{opacity:0;transform:scale(2.2)}}
-.tl{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);white-space:nowrap;text-align:center;
+.tl{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);white-space:nowrap;text-align:center;
   background:#fff;border:1px solid var(--line);border-radius:9px;padding:4px 10px;box-shadow:0 4px 14px rgba(7,54,74,.25)}
 .tl b{display:block;font-size:13px;letter-spacing:-.01em}
 .tl small{display:block;font-size:10.5px;color:var(--mut)}
 
 .hub{position:relative;width:0;height:0}
-.hub .hr{position:absolute;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid #0b2a40;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.hub .hr{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#fff;border:2.5px solid #0b2a40;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.term:before,.hub:before{content:"";position:absolute;border-radius:50%;left:-14px;top:-14px;width:28px;height:28px}.hub:before{left:-10px;top:-10px;width:20px;height:20px}
 .hub .hl{position:absolute;white-space:nowrap;font-size:11.5px;font-weight:800;color:var(--ink);background:#fff;border:1px solid var(--line);
   border-radius:6px;padding:1px 7px;box-shadow:0 2px 8px rgba(7,54,74,.18)}
-.hub.d-top .hl{left:50%;bottom:12px;transform:translateX(-50%)}
-.hub.d-bottom .hl{left:50%;top:12px;transform:translateX(-50%)}
-.hub.d-left .hl{right:14px;top:-10px}
-.hub.d-right .hl{left:14px;top:-10px}
+.hub.d-top .hl{left:50%;bottom:9px;transform:translateX(-50%)}
+.hub.d-bottom .hl{left:50%;top:9px;transform:translateX(-50%)}
+.hub.d-left .hl{right:10px;top:-10px}
+.hub.d-right .hl{left:10px;top:-10px}
 .leaflet-container.zl .hub .hl{display:none}
 
 .bus{position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
@@ -321,6 +321,12 @@ button{cursor:pointer}
 .lscroll{position:relative;max-height:300px}
 .drow.nx:not(.on){outline:2px solid var(--tub)}
 .dhelp summary{cursor:pointer;font-size:11.5px;font-weight:800;color:var(--mut)}
+.dleader{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.dleader line{stroke:#0b2a40;stroke-width:1.8;stroke-linecap:round}
+.dmerge{position:absolute;left:14px;top:-30px;display:flex;flex-direction:column;gap:3px;padding:5px 9px;border:2px solid #0b2a40;border-radius:9px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.25);font-size:11.5px;line-height:1.2;white-space:nowrap;color:#0b2a40}
+.dmerge small{font-size:10.5px;font-weight:600;color:#4a5d6b}
+.dmerge i{display:block;height:1px;background:#9fb0bd}
+.dmerge span{font-weight:800;color:#6a2fc9}
 .cert{margin:6px 0 0;font-size:11.5px;color:var(--mut);line-height:1.4}
 .cert.ap{color:#9a5b00}
 .ct{font-style:normal;font-weight:800;font-size:10.5px;color:var(--mut)}
@@ -430,16 +436,7 @@ button{cursor:pointer}
     <div class="road" id="road" role="slider" tabindex="0" aria-label="Hora da simulação" aria-valuemin="390" aria-valuemax="1230" aria-valuenow="420">
       <div id="rticks"></div>
       <div class="rbus" id="rbus" aria-hidden="true">
-        <svg viewBox="0 0 112 42">
-          <path class="busBody" d="M8 4h88c7 0 12 5 13 12l1 12v4.5a2.5 2.5 0 0 1-2.5 2.5H5.5A2.5 2.5 0 0 1 3 32.5V9a5 5 0 0 1 5-5Z"/>
-          <path class="busStripe" d="M3 25h107v7.5a2.5 2.5 0 0 1-2.5 2.5H5.5A2.5 2.5 0 0 1 3 32.5Z"/>
-          <rect class="busWin" x="9" y="9" width="15" height="11" rx="1.6"/><rect class="busWin" x="27" y="9" width="15" height="11" rx="1.6"/>
-          <rect class="busWin" x="45" y="9" width="15" height="11" rx="1.6"/><rect class="busWin" x="63" y="9" width="12" height="11" rx="1.6"/>
-          <rect class="busDoor" x="78" y="9" width="10" height="23" rx="1.4"/>
-          <path class="busWin" d="M91 9h5.5c4 0 7 3 8 7l.8 5H91Z"/>
-          <rect class="busSign" x="89" y="5.2" width="13" height="2.6" rx=".8"/><circle class="busLight" cx="108" cy="29" r="1.4"/>
-          <g class="busWheel"><circle cx="25" cy="35" r="5.6"/><circle class="hub" cx="25" cy="35" r="2.2"/><path class="spoke" d="M25 31.2v7.6M21.2 35h7.6"/></g>
-          <g class="busWheel"><circle cx="89" cy="35" r="5.6"/><circle class="hub" cx="89" cy="35" r="2.2"/><path class="spoke" d="M89 31.2v7.6M85.2 35h7.6"/></g>
+        <svg viewBox="0 0 201 52"><path fill="#0e0f14" d="M 9 0 L 11.5 2 L 145.5 2 L 146.5 3 L 184.5 3 L 187.5 1 L 196 4 L 197 6.5 L 195.5 6 L 192.5 5 L 3 5 L 1.5 23 L 1 9.5 L 3.5 3 L 7.5 2 L 9 2.5 L 9 0Z"/><path fill="#0e0f14" d="M 6.5 7 L 43.5 7 L 44.5 8 L 50.5 7 Q 54.5 6 58.5 13 Q 63.5 17 74.5 15 L 77 17.5 L 78 21.5 L 75.5 25 L 61.5 26 L 55 30.5 L 53.5 33 L 18.5 32 L 5 33 L 5 8.5 L 6.5 7 Z M 11 17 L 14 20 L 13 19 Q 14 16 11 17Z"/><path fill="#0e0f14" d="M 78.5 8 L 193.5 8 L 194 9.5 L 196 13.5 L 195 38.5 L 193.5 40 L 173.5 40 L 171 38 L 170.5 40 Q 166.7 32.3 155.5 32 Q 145.2 32.7 141.5 40 L 73.5 40 L 65 33.5 Q 78.2 35.2 83 28.5 Q 86.3 24.8 85 16.5 L 80.5 10 L 78.5 8 Z M 102 9 L 102 11 L 106 12 Q 108 7 102 9 Z M 174 16 L 174 19 L 176 19 Q 174 25 178 24 L 179 22 Q 182 13 174 16 Z M 183 16 L 182 29 L 186 29 Q 185 25 188 26 L 189 24 L 189 27 L 191 27 L 191 16 L 189 17 L 183 16Z"/><path fill="#0e0f14" d="M 198.5 9 Q 202 11 201 17.5 L 200 17.5 L 198.5 9Z"/><path fill="#0e0f14" d="M 57.5 34 Q 63.9 34.7 66 39.5 L 67 48 Q 64 51.7 56.5 52 L 52 49.5 L 51 47.5 L 51 45.5 L 53 38.5 L 51 39.5 L 49.5 48 L 49 40.5 L 53.5 35 L 57.5 34 Z M 56 36 L 56 37 L 61 37 L 56 36 Z M 56 39 L 53 42 L 54 49 L 57 50 Q 63 51 64 47 L 63 41 Q 61 37 56 39Z"/><path fill="#0e0f14" d="M 153.5 35 Q 162.1 33.9 164 39.5 L 165 48 Q 161.2 46.5 162 49.5 Q 160.8 53.3 154.5 52 L 156 49.5 L 158.5 46 L 158.5 50 L 161 48.5 L 162 42.5 L 159.5 39 L 159 42 L 157 40.5 L 156 37 L 151 39.5 L 149 44.5 L 150 49.5 L 147 47.5 Q 145.8 39.5 149 37 L 153.5 35Z"/><path fill="#0e0f14" d="M 56.5 40 L 60 40.5 L 60 42.5 L 58.5 46 L 56 46.5 L 56.5 48 L 54 42.5 L 56.5 40Z"/><path fill="#373f47" d="M 182.5 5 L 193 5.5 L 182.5 6 L 182.5 5Z"/><path fill="#373f47" d="M 76.5 7 L 125 7.5 L 76.5 8 L 76.5 7Z"/><path fill="#373f47" d="M 141.5 7 L 149 7.5 L 141.5 8 L 141.5 7Z"/><path fill="#373f47" d="M 155.5 7 L 168 7.5 L 155.5 8 L 155.5 7Z"/><path fill="#373f47" d="M 196.5 7 Q 199.3 6.4 198 12.5 L 197 12.5 L 196.5 7Z"/><path fill="#373f47" d="M 102.5 9 L 103 11 L 106 11.5 L 103.5 12 L 102.5 9Z"/><path fill="#373f47" d="M 2.5 10 L 3 19.5 L 2 19.5 L 2.5 10Z"/><path fill="#373f47" d="M 187.5 16 L 189.5 16 L 191 16.5 L 189 17 L 188.5 20 L 187.5 16Z"/><path fill="#373f47" d="M 195.5 16 L 196 22.5 L 195 22.5 L 195.5 16Z"/><path fill="#373f47" d="M 10.5 17 L 13 17.5 L 14 19.5 L 12.5 20 L 10 18.5 L 9.5 20 L 9 18.5 L 10.5 17Z"/><path fill="#373f47" d="M 197.5 17 L 199 28.5 L 199 30.5 L 200 34.5 L 199 37.5 L 198.5 40 L 198 35.5 L 199 33.5 L 197 30.5 L 197.5 17Z"/><path fill="#373f47" d="M 176.5 18 L 178.5 24 L 180 24.5 L 178.5 25 L 176 24 L 176.5 18Z"/><path fill="#373f47" d="M 4.5 19 L 5 28.5 L 4 28.5 L 4.5 19Z"/><path fill="#373f47" d="M 190.5 20 L 191 27 L 194 28.5 L 192.5 29 L 189 27 L 188 21.5 L 189 21.5 L 189.5 24 L 190.5 20Z"/><path fill="#373f47" d="M 183 25 L 188 25.5 L 183 27 L 182.5 29 L 182 27.5 L 183 25Z"/><path fill="#373f47" d="M 18.5 32 L 46 32.5 L 18.5 33 L 18.5 32Z"/><path fill="#373f47" d="M 155.5 32 L 163 33.5 L 156.5 34 L 154 33.5 L 155.5 32Z"/><path fill="#373f47" d="M 66.5 34 L 70.5 39 L 66.5 34Z"/><path fill="#373f47" d="M 147.5 34 L 143.5 39 L 147.5 34Z"/><path fill="#373f47" d="M 55.5 36 L 61 36.5 L 53 38 L 51 45.5 L 51.5 49 Q 48.5 47.5 50 41.5 L 53.5 37 L 55.5 36Z"/><path fill="#373f47" d="M 153.5 37 Q 157.3 35.8 156 39.5 L 157 42 Q 160 43.3 159 39.5 L 161 40.5 L 162 46.5 L 159.5 50 L 158 49.5 L 157.5 47 L 153.5 52 L 150 50.5 L 149 44.5 L 153.5 37 Z M 152 40 L 151 49 L 155 50 L 157 46 L 155 44 L 156 41 L 152 40Z"/><path fill="#373f47" d="M 55.5 39 L 57 39.5 L 55.5 43 L 53 41.5 L 55.5 39Z"/><path fill="#373f47" d="M 58.5 39 L 63 40.5 L 64 46.5 Q 63 51 56.5 50 L 54 49 L 53 46.5 L 55.5 45 L 58.5 46 L 60 42.5 L 59.5 41 L 61 40.5 L 58.5 39 Z M 62 41 L 61 45 Q 59 50 57 47 L 56 49 Q 62 50 63 47 L 62 41Z"/><path fill="#373f47" d="M 48.5 42 L 49 47.5 L 48 47.5 L 48.5 42Z"/><path fill="#73757c" d="M 4.5 0 Q 10.3 -1.7 9 2 L 1.5 3 L 2.5 1 L 4.5 0Z"/><path fill="#73757c" d="M 135.5 5 L 157.5 5 L 159 6.5 L 157.5 6 L 135.5 6 L 135.5 5Z"/><path fill="#73757c" d="M 162.5 5 L 182 5.5 L 162.5 6 L 162.5 5Z"/><path fill="#73757c" d="M 125.5 7 L 141 7.5 L 125.5 8 L 125.5 7Z"/><path fill="#73757c" d="M 195.5 15 L 197 15.5 L 197 23.5 L 196 23.5 L 195.5 15Z"/><path fill="#73757c" d="M 176.5 16 Q 180.7 14.7 179 19.5 L 177.5 23 L 177 18 L 175 17.5 L 176.5 16Z"/><path fill="#73757c" d="M 183 16 L 188 17.5 Q 191.3 27.8 183 25 L 183 16Z"/><path fill="#73757c" d="M 189 17 Q 192 15.8 191 19.5 L 189.5 24 L 189 17Z"/><path fill="#73757c" d="M 198.5 17 L 201 18.5 Q 197.3 20.3 199 27.5 L 200 32.5 L 199 32.5 L 198 29.5 L 198 27.5 L 198.5 17Z"/><path fill="#73757c" d="M 2.5 23 L 3 39 L 1 38.5 L 2.5 23Z"/><path fill="#73757c" d="M 164.5 34 L 169.5 40 L 164.5 34Z"/><path fill="#73757c" d="M 197.5 35 L 199 41.5 L 198 43.5 L 199 48 L 197 47.5 L 197.5 35Z"/><path fill="#73757c" d="M 60.5 40 Q 65 42 61.5 44 L 60.5 40Z"/><path fill="#73757c" d="M 152.5 40 L 156 41 L 157 43.5 L 154.5 50 L 151 49 L 152 43.5 L 151.5 42 L 154 41.5 L 152.5 40Z"/><path fill="#73757c" d="M 172.5 40 L 194 40.5 L 172.5 41 L 172.5 40Z"/><path fill="#73757c" d="M 146.5 42 L 147 47.5 L 146 47.5 L 146.5 42Z"/><path fill="#73757c" d="M 60.5 45 L 57.5 49 L 56 48.5 L 60.5 45Z"/><path fill="#73757c" d="M 182.5 48 L 189 48.5 L 182.5 49 L 182.5 48Z"/><path fill="#aaafb6" d="M 190.5 1 L 196 2.5 L 193.5 3 L 190.5 1Z"/><path fill="#aaafb6" d="M 67.5 5 L 135 5.5 L 67.5 6 L 67.5 5Z"/><path fill="#aaafb6" d="M 189.5 6 L 193 7.5 L 190.5 8 L 188.5 8 L 171 7.5 L 189.5 6Z"/><path fill="#aaafb6" d="M 195.5 8 L 197 12.5 L 196 12.5 L 195.5 8Z"/><path fill="#aaafb6" d="M 199.5 20 L 200 27.5 L 199 27.5 L 199.5 20Z"/><path fill="#aaafb6" d="M 195.5 23 L 197 35.5 L 196 44.5 L 197 48 L 195 48 L 194.5 42 L 167.5 42 L 167.5 41 L 171.5 40 L 195 41 L 196 35.5 L 195.5 23Z"/><path fill="#aaafb6" d="M 0.5 37 L 2 45 L 4 45.5 L 1.5 46 L 0 43.5 L 1 40.5 L 0.5 37Z"/><path fill="#aaafb6" d="M 111.5 40 L 141 40.5 L 113.5 42 L 111.5 40Z"/><path fill="#aaafb6" d="M 62.5 43 L 63 45.5 L 62 48 L 58.5 49 L 61 45.5 L 62.5 43Z"/><path fill="#e3e3e7" d="M 14.5 1 L 21 1.5 L 14.5 2 L 14.5 1Z"/><path fill="#e3e3e7" d="M 27.5 1 L 69 1.5 L 27.5 2 L 27.5 1Z"/><path fill="#e3e3e7" d="M 62.5 5 L 157 6.5 L 63.5 7 L 62.5 5Z"/><path fill="#e3e3e7" d="M 161.5 6 L 189 6.5 L 161.5 7 L 161.5 6Z"/><path fill="#e3e3e7" d="M 190.5 6 L 196 7.5 L 193.5 8 L 190.5 6Z"/><path fill="#e3e3e7" d="M 196.5 24 L 197 31.5 L 196 31.5 L 196.5 24Z"/><path fill="#e3e3e7" d="M 63 34 L 65.5 34 L 71.5 40 L 83.5 41 L 106.5 40 L 108.5 41 L 110.5 40 L 113.5 42 L 140.5 41 L 148.5 34 L 153.5 34 L 153.5 35 L 147 39.5 L 146 48 L 84.5 48 L 83.5 47 L 73.5 48 L 71.5 48 L 67 48 L 67 40.5 L 63 34Z"/><path fill="#e3e3e7" d="M 159.5 34 L 163.5 34 L 171 40.5 L 167 41.5 L 195 42 L 194.5 48 L 168.5 48 L 168 45.5 L 166.5 44 L 160.5 35 L 159.5 34Z"/><path fill="#e3e3e7" d="M 196.5 36 L 197 44.5 L 196 44.5 L 196.5 36Z"/><path fill="#da2438" d="M 54.5 6 L 61.5 6 Q 60.9 9.4 69 8 L 69 11 L 57.5 11 L 55 8.5 L 54.5 6Z"/><path fill="#da2438" d="M 70 8 Q 76.8 6.9 80 10.5 L 70 11 L 70 8Z"/><path fill="#da2438" d="M 59.5 12 L 68.5 12 L 69 14 L 59.5 13 L 59.5 12Z"/><path fill="#da2438" d="M 70 12 L 82 12.5 L 70 14 L 70 12Z"/><path fill="#da2438" d="M 73.5 14 Q 81.8 11.8 84 15.5 Q 84.5 18.5 77.5 17 L 73.5 14Z"/><path fill="#da2438" d="M 78 18 L 85 18 L 85 23.5 L 79.5 31 L 70.5 33 L 68.5 33 L 61.5 35 L 54 33.5 L 58.5 28 L 69 26 L 69.5 30 L 70 26 L 77 25 L 78 18Z"/><path fill="#199bd2" d="M 12.5 5 L 51.5 5 L 53 6.5 L 9.5 7 L 9.5 6 L 12.5 5Z"/><path fill="#199bd2" d="M 4.5 6 L 8 6.5 L 5 7 L 4 11.5 L 4 34 L 45.5 33 L 53 34.5 Q 47.8 37.1 48 44 L 46 44.5 L 48 45 L 46.5 47 L 43.5 48 L 21.5 47 L 19.5 48 L 2 45 L 3 38.5 L 3 7.5 L 4.5 6 Z M 6 40 L 6 43 L 12 45 L 11 44 Q 13 37 6 40Z"/><path fill="#2478a2" d="M 5.5 5 L 12 5.5 L 8.5 7 L 5.5 5Z"/><path fill="#2478a2" d="M 4.5 11 L 5 18.5 L 4 18.5 L 4.5 11Z"/><path fill="#2478a2" d="M 4.5 29 L 5 33 L 18 33.5 L 4 34 L 4.5 29Z"/><path fill="#2478a2" d="M 46.5 33 L 53 33.5 L 46.5 34 L 46.5 33Z"/><path fill="#2478a2" d="M 52.5 35 L 49.5 39 L 52.5 35Z"/><path fill="#2478a2" d="M 6 40 Q 12.3 37.5 11 42.5 L 7.5 44 L 6 40Z"/><path fill="#2478a2" d="M 6.5 46 L 12 46.5 L 6.5 47 L 6.5 46Z"/><path fill="#2478a2" d="M 21.5 47 L 30 47.5 L 21.5 48 L 21.5 47Z"/><path fill="#a52331" d="M 53.5 5 L 61 5.5 L 53.5 6 L 53.5 5Z"/><path fill="#a52331" d="M 54.5 7 L 57.5 11 L 68.5 11 L 69 8 L 62 7.5 L 75.5 7 L 79 9.5 L 77.5 9 L 70 8 L 70.5 11 L 79.5 11 Q 81.3 8.3 83 12.5 L 84 14.5 L 82.5 14 L 62.5 15 L 60 13.5 L 66.5 13 L 69 14 L 68.5 12 L 59.5 12 L 58.5 13 L 54 8.5 L 54.5 7 Z M 70 12 L 70 14 L 82 13 L 70 12Z"/><path fill="#a52331" d="M 75.5 15 Q 77 18.5 83.5 17 L 85 16.5 Q 85.5 19.5 78.5 18 L 77 18.5 L 75.5 15Z"/><path fill="#a52331" d="M 0.5 28 L 2 28.5 L 2 37.5 L 1 37.5 L 0 33.5 L 1 30.5 L 0.5 28Z"/><g class="busLogo" transform="translate(92.56 10.22) scale(0.118)"><clipPath id="tubCR"><rect x="0" y="0" width="91" height="175"/></clipPath><clipPath id="tubCB"><rect x="91" y="0" width="330" height="175"/></clipPath><path class="r" d="M8 48L85 48.5Q73.53846153846153 53.03846153846154 67 62.5L59.5 76L8 76L8 48Z"/><path class="r" clip-path="url(#tubCR)" d="M104.5 48L146 48L146 75L107.5 75L99.5 78L94 82.5L90 90.5L90 163.5L88.5 165L63.5 165L63 164.5L63 88.5L64 87.5L65 79.5L68 72.5Q73.3 63.3 81.5 57L94.5 50L103.5 49L104.5 48Z"/><path class="b" clip-path="url(#tubCB)" d="M104.5 48L146 48L146 75L107.5 75L99.5 78L94 82.5L90 90.5L90 163.5L88.5 165L63.5 165L63 164.5L63 88.5L64 87.5L65 79.5L68 72.5Q73.3 63.3 81.5 57L94.5 50L103.5 49L104.5 48Z"/><path class="b" fill-rule="evenodd" d="M313 10L338.5 10L340 11.5L340 48L364.5 48L365.5 49L373.5 50L380.5 53Q389.70000000000005 58.29999999999999 396 66.5L402 77.5L403 83.5L404 84.5L404 89.5L405 90.5L405 121.5L404 122.5L404 128.5Q402.25 129.25 403 132.5L399 141.5Q394.50000000000006 149.5 387.5 155L381.5 159L372.5 163L357.5 165L356.5 164L349.5 164Q348.75 162.25 345.5 163L334.5 158L322 146.5L316 135.5L314 129.5L314 124.5L313 123.5L313 10ZM340 75L358.5 75Q359.4999999999999 76.99999999999997 363.5 76L368.5 78L375 84.5L378 90.5L378 122.5L375 129.5L369.5 135L363.5 138L354.5 138L349.5 136L342 128.5L340 123.5L340 75ZM153 48L169.5 48L170.5 49L175.5 49L181.5 51L189.5 55L201 65.5L205 71.5L209 80.5L211 96.5L210 97.5L210 121.5L212 127.5L218.5 135L225.5 138L233.5 138L240.5 135L246 129.5L249 121.5L249 86.5Q250.74999999999997 85.75 250 82.5L255 70.5L264.5 59Q271.1378205128205 53.13782051282051 280.5 50L288.5 49L289.5 48L307 48Q307.75 50.583333333333336 306 51.5L306 75L292.5 75Q291.75 76.75 288.5 76Q281.66666666666663 78.66666666666667 278 84.5L275 91.5L275 126.5Q273.25 127.25 274 130.5L269 142.5L260.5 153L245.5 162L239.5 163L238.5 164L231.5 164L228.5 165L227.5 164L219.5 164L210.5 161Q201.33096590909093 156.66903409090912 195 149.5L186 134.5L186 131.5L184 126.5L184 91.5L181 84.5L174.5 78L166.5 75L153 75L153 48Z"/></g><g class="busWheel"><circle cx="57.3" cy="44" r="7.6"/><path class="spoke" d="M57.3 37.4v13.2M50.7 44h13.2M52.6 39.3l9.4 9.4M52.6 48.7l9.4-9.4"/></g><g class="busWheel"><circle cx="155.3" cy="44" r="7.6"/><path class="spoke" d="M155.3 37.4v13.2M148.7 44h13.2M150.6 39.3l9.4 9.4M150.6 48.7l9.4-9.4"/></g>
         </svg>
       </div>
     </div>
@@ -744,7 +741,7 @@ function buildStops(){
   for(const h of HUBS){
     const p=DATA.paragens.find(x=>x.c===h.c);if(!p)continue;
     const html=h.term
-      ?`<div class="term"><svg class="arc" viewBox="0 0 46 46"><circle class="trk" cx="23" cy="23" r="19"/><circle class="prg" cx="23" cy="23" r="19"/></svg><i class="ring"></i><div class="tl"><b>${h.name}</b><small>${h.sub}</small></div></div>`
+      ?`<div class="term"><svg class="arc" viewBox="0 0 30 30"><circle class="trk" cx="15" cy="15" r="12.5"/><circle class="prg" cx="15" cy="15" r="12.5"/></svg><i class="ring"></i><div class="tl"><b>${h.name}</b><small>${h.sub}</small></div></div>`
       :`<div class="hub d-${h.dir}"><i class="hr"></i><b class="hl">${h.name}</b></div>`;
     const m=L.marker([p.p[1],p.p[0]],{icon:L.divIcon({className:'busw',iconSize:[0,0],html}),zIndexOffset:h.term?900:400,keyboard:false}).addTo(map);
     m.bindPopup(()=>popupHub(h));
@@ -815,9 +812,9 @@ function updateMapMarks(){
       const prg=root.querySelector('.prg');
       if(prev&&next&&next.t-prev.t<=40){
         const f=(t-prev.t)/(next.t-prev.t);
-        prg.style.strokeDashoffset=String(119.4*(1-Math.max(0,Math.min(1,f))));
+        prg.style.strokeDashoffset=String(78.5*(1-Math.max(0,Math.min(1,f))));
         root.style.setProperty('--pc',COL[next.l]);
-      }else prg.style.strokeDashoffset='119.4';
+      }else prg.style.strokeDashoffset='78.5';
     }
     const idx=prev?list.indexOf(prev):-1;
     if(prev&&t-prev.t<1.2&&lastFire[h.c]!==prev.t){
@@ -1056,11 +1053,59 @@ function destFit(pts,maxZ){
   const bottom=narrow?Math.min(innerHeight*.6,$('panel').offsetHeight+16)+20:40;
   map.invalidateSize();
   map.fitBounds(L.latLngBounds(pts),{paddingTopLeft:[narrow?30:50,head+(narrow?50:64)],paddingBottomRight:[pw+30,bottom],animate:false,maxZoom:maxZ||16});
+  layoutMerge();
+}
+function parkS(w){
+  const lab=w.map(x=>x[2]);let i=-1;
+  if(dst.park==='e')i=dst.dir==='i'?lab.indexOf('e0'):(lab[lab.length-1]==='e1'?lab.length-1:-1);
+  else i=dst.dir==='i'?lab.indexOf('rs'):(lab.includes('rs1')?lab.indexOf('rs1'):(lab.indexOf('rs')>0?lab.indexOf('rs'):-1));
+  return i>=0?w[i][1]:null;
+}
+function ifSeg(r){
+  const tr=DATA.trips[r[8]],k=tr.l,c=CIRC[k];if(!c)return null;
+  const P=c.off||c.ll,sp=parkS(tr.w);if(sp==null)return null;
+  let sx=tripS(tr,r[0]);const X=pxl(r[4]);
+  if(X){let bd=1e9,bs=sx;const a=idxAt(k,Math.max(0,sx-450)),b=Math.min(c.ll.length-1,idxAt(k,sx+450)+1);
+    for(let i=a;i<=b;i++){const d=Math.hypot((c.ll[i][0]-X[0])*KY,(c.ll[i][1]-X[1])*KX);if(d<bd){bd=d;bs=c.cum[i]}}sx=bs}
+  const s1=Math.min(sp,sx),s2=Math.max(sp,sx);
+  return{k,P,cut:c.cut,i1:idxAt(k,s1),i2:Math.min(idxAt(k,s2)+1,P.length-1),col:COL[k]};
+}
+const pst=(c,n)=>(n||'paragem')+' · cód. '+c;
+let dMerge=null,dPts=[],dMergeBound=false;
+function layoutMerge(){
+  const o=dMerge;if(!o||!map)return;
+  const el=o.m.getElement(),card=el&&el.querySelector('.dmerge'),ln=el&&el.querySelector('.dleader line');if(!card||!ln)return;
+  const w=card.offsetWidth||200,h=card.offsetHeight||62,z=map.getZoom();
+  const D=Math.max(36,Math.min(130,(z-13)*28+36)),a=map.latLngToContainerPoint(o.M),sz=map.getSize();
+  const narrow=innerWidth<=980,head=$('top').offsetHeight,pw=narrow?0:$('panel').offsetWidth+34;
+  const bot=narrow?Math.min(innerHeight*.6,$('panel').offsetHeight+16)+20:40;
+  const box={x0:8,x1:sz.x-pw-8,y0:head+8,y1:sz.y-bot};
+  // pontos dos percursos em pixels (densificados)
+  const pts=[];
+  dPts.forEach(arr=>{let p0=null;arr.forEach(q=>{const p=map.latLngToContainerPoint(q);if(p0){const dx=p.x-p0.x,dy=p.y-p0.y,n=Math.min(60,Math.ceil(Math.hypot(dx,dy)/10));for(let i=1;i<=n;i++)pts.push([p0.x+dx*i/n,p0.y+dy*i/n])}else pts.push([p.x,p.y]);p0=p})});
+  let best=null;
+  for(const k of [1,1.5]){
+    for(let ang=0;ang<360;ang+=45){
+      const ux=Math.cos(ang*Math.PI/180),uy=Math.sin(ang*Math.PI/180),dd=D*k;
+      const cx=a.x+ux*dd+(Math.abs(ux)>.3?Math.sign(ux)*w/2:0),cy=a.y+uy*dd+(Math.abs(uy)>.3?Math.sign(uy)*h/2:0);
+      const r={x0:cx-w/2,x1:cx+w/2,y0:cy-h/2,y1:cy+h/2};
+      let cost=k>1?4:0;
+      cost+=3*(Math.max(0,box.x0-r.x0)+Math.max(0,r.x1-box.x1)+Math.max(0,box.y0-r.y0)+Math.max(0,r.y1-box.y1));
+      if(!narrow&&r.x0<470&&r.y1>sz.y-170)cost+=500;
+      for(const p of pts)if(p[0]>r.x0-4&&p[0]<r.x1+4&&p[1]>r.y0-4&&p[1]<r.y1+4)cost++;
+      if(!best||cost<best.cost)best={cost,r,cx,cy};
+    }
+  }
+  const r=best.r;
+  card.style.left=(r.x0-a.x)+'px';card.style.top=(r.y0-a.y)+'px';
+  const px=Math.max(r.x0,Math.min(r.x1,a.x)),py=Math.max(r.y0,Math.min(r.y1,a.y));
+  ln.setAttribute('x2',px-a.x);ln.setAttribute('y2',py-a.y);
 }
 const shpC={};
 const shpG=i=>{if(i==null||!DATA.shp||!DATA.shp[i])return null;return shpC[i]||(shpC[i]={p:DATA.shp[i]})};
 function fAt(ft,t){if(t<=ft[0][0])return ft[0][1];for(let i=1;i<ft.length;i++)if(t<=ft[i][0]){const a=ft[i-1],b=ft[i];return b[0]===a[0]?b[1]:a[1]+(b[1]-a[1])*(t-a[0])/(b[0]-a[0])}return ft[ft.length-1][1]}
 function destClear(){
+  dMerge=null;
   [destLayer,destDet,destBusL].forEach(l=>{if(l&&map)map.removeLayer(l)});
   destLayer=destDet=destBusL=null;dBus.clear();
 }
@@ -1068,7 +1113,8 @@ function vehLL(ti){const v=vehicles.get(ti);return v?v.m.getLatLng():null}
 let dRend=null;
 function destMap(){
   if(!map)return;
-  destClear();
+  destClear();dPts=[];
+  if(!dMergeBound){dMergeBound=true;map.on('zoomend',layoutMerge)}
   if(!map.getPane('dpane')){const p=map.createPane('dpane');p.style.zIndex=450}
   if(!dRend)dRend=L.svg({pane:'dpane'});
   map.getContainer().classList.toggle('dfocus',!!curRow());
@@ -1080,27 +1126,41 @@ function destMap(){
   const L0=curLine(x),rows=rowsNow(),r0=curRow(),gSel=r0?gOf(x,r0):null;
   if(L0){
     // percurso da linha de ligação (só esta)
-    if(r0){const sg=shpG(tOf(x,r0)[3]);if(sg){const fl=sg.p.map(p=>[p[1],p[0]]);
+    const IF=r0?ifSeg(r0):null;
+    if(IF){[IF.P.slice(0,IF.cut),IF.P.slice(IF.cut)].forEach(a=>{if(a.length>1){dPts.push(a);
+      L.polyline(a,{renderer:dRend,color:'#fff',weight:7,opacity:.85,lineCap:'round',lineJoin:'round',interactive:false}).addTo(destDet);
+      L.polyline(a,{renderer:dRend,color:IF.col,weight:4,opacity:.4,lineCap:'round',lineJoin:'round',interactive:false}).addTo(destDet)}});
+      const sg=IF.P.slice(IF.i1,IF.i2+1);
+      L.polyline(sg,{renderer:dRend,color:'#fff',weight:10,opacity:.95,lineCap:'round',lineJoin:'round',interactive:false}).addTo(destDet);
+      L.polyline(sg,{renderer:dRend,color:IF.col,weight:6,opacity:1,lineCap:'round',lineJoin:'round'}).bindTooltip('Interface',{sticky:true,className:'lbl'}).addTo(destDet)}
+    if(r0){const sg=shpG(tOf(x,r0)[3]);if(sg){const fl=sg.p.map(p=>[p[1],p[0]]);dPts.push(fl);
       L.polyline(fl,{renderer:dRend,color:'#fff',weight:8,opacity:.9,lineCap:'round',lineJoin:'round',interactive:false}).addTo(destDet);
       L.polyline(fl,{renderer:dRend,color:LCOL,weight:4,opacity:.5,lineCap:'round',lineJoin:'round'}).bindTooltip('Linha '+L0+' (percurso completo)',{sticky:true,className:'lbl'}).addTo(destDet)}}
     x.geo.filter(g=>g.l===L0&&g.o===dst.dir&&(!gSel||g===gSel)).forEach(g=>{
-      const ll=g.p.map(p=>[p[1],p[0]]),on=g===gSel;
+      const ll=g.p.map(p=>[p[1],p[0]]),on=g===gSel;dPts.push(ll);
       L.polyline(ll,{renderer:dRend,color:'#fff',weight:on?10:8,opacity:.95,lineCap:'round',lineJoin:'round',interactive:false}).addTo(destDet);
       L.polyline(ll,{renderer:dRend,color:LCOL,weight:on?6:4.5,opacity:gSel&&!on?.5:1,lineCap:'round',lineJoin:'round'}).bindTooltip('Linha '+L0,{sticky:true,className:'lbl'}).addTo(destDet);
     });
+    if(IF)L.polyline(IF.P.slice(IF.i1,IF.i2+1),{renderer:dRend,color:IF.col,weight:2.5,opacity:1,lineCap:'round',interactive:false}).addTo(destDet);
     // o ponto do transbordo: o escolhido ou o mais frequente
     let p=r0;
     if(!p&&rows.length){const mk=mode(rows.map(r=>r[4]+'|'+r[7]));p=rows.find(r=>r[4]+'|'+r[7]===mk)}
     if(p){
-      const g=gOf(x,p),I=pxl(p[4]),H=[g.h[1],g.h[0]],w=walkLL(p);
-      if(w)L.polyline(w,{renderer:dRend,color:'#0b2a40',weight:4,dashArray:'6 6',opacity:.95}).addTo(destDet);
-      else if(I&&p[3]>0)L.polyline([I,H],{renderer:dRend,color:'#0b2a40',weight:3,dashArray:'6 6'}).addTo(destDet);
-      if(p[3]>0){const mid=w?w[Math.floor(w.length/2)]:[(I[0]+H[0])/2,(I[1]+H[1])/2];L.marker(mid,{icon:L.divIcon({className:'busw',iconSize:[0,0],html:`<div class="dwalk">${p[3]} m a pé</div>`}),interactive:false,zIndexOffset:600}).addTo(destDet)}
-      if(I)L.circleMarker(I,{renderer:dRend,radius:9,color:'#0b2a40',weight:4,fillColor:'#fff',fillOpacity:1}).addTo(destDet).bindTooltip(dst.dir==='i'?'O Interface pára aqui':'O Interface apanha-se aqui',{permanent:true,direction:'left',offset:[-8,0],className:'lbl'});
-      L.circleMarker(H,{renderer:dRend,radius:9,color:'#fff',weight:3,fillColor:LCOL,fillOpacity:1}).addTo(destDet).bindTooltip((dst.dir==='i'?'Aqui apanha a linha ':'Aqui chega a linha ')+L0,{permanent:true,direction:'right',offset:[8,0],className:'lbl'});
+      const g=gOf(x,p),I=pxl(p[4]),H=[g.h[1],g.h[0]],w=walkLL(p),sem=p[3]<=30;
+      if(!sem&&w)L.polyline(w,{renderer:dRend,color:'#0b2a40',weight:4,dashArray:'6 6',opacity:.95}).addTo(destDet);
+      else if(!sem&&I&&p[3]>0)L.polyline([I,H],{renderer:dRend,color:'#0b2a40',weight:3,dashArray:'6 6'}).addTo(destDet);
+      if(!sem&&p[3]>0){const mid=w?w[Math.floor(w.length/2)]:[(I[0]+H[0])/2,(I[1]+H[1])/2];L.marker(mid,{icon:L.divIcon({className:'busw',iconSize:[0,0],html:`<div class="dwalk">${p[3]} m a pé</div>`}),interactive:false,zIndexOffset:600}).addTo(destDet)}
+      const cI=I?L.circleMarker(I,{renderer:dRend,radius:9,color:'#0b2a40',weight:4,fillColor:'#fff',fillOpacity:1}).addTo(destDet):null;
+      const cH=L.circleMarker(H,{renderer:dRend,radius:sem?5:9,color:'#fff',weight:3,fillColor:LCOL,fillOpacity:1}).addTo(destDet);
+      if(sem){const M=I?[(I[0]+H[0])/2,(I[1]+H[1])/2]:H,ida=dst.dir==='i';
+        const inner=`<b>${ida?'O Interface pára aqui':'A linha '+L0+' chega aqui'}</b><small>${ida?pst(p[4],pxn(p[4])):pst(p[7],g.hn)}</small><i></i><span>${ida?'Apanha a linha '+L0:'Apanha o Interface'} · sem andar</span>${p[4]===p[7]?'':`<small>${ida?pst(p[7],g.hn):pst(p[4],pxn(p[4]))}</small>`}`;
+        const mk=L.marker(M,{icon:L.divIcon({className:'busw',iconSize:[0,0],html:`<div class="dmw"><svg class="dleader" width="1" height="1"><line x1="0" y1="0" x2="0" y2="0"/></svg><div class="dmerge">${inner}</div></div>`}),interactive:false,keyboard:false,zIndexOffset:300}).addTo(destDet);
+        dMerge={m:mk,M}}
+      else{if(cI)cI.bindTooltip((dst.dir==='i'?'O Interface pára aqui':'O Interface apanha-se aqui')+'<br>'+pst(p[4],pxn(p[4])),{permanent:true,direction:'left',offset:[-8,0],className:'lbl'});
+        cH.bindTooltip((dst.dir==='i'?'Aqui apanha a linha ':'Aqui chega a linha ')+L0+'<br>'+pst(p[7],g.hn),{permanent:true,direction:'right',offset:[8,0],className:'lbl'})}
     }
   }
-  destLayer.addTo(map);destDet.addTo(map);destBusL.addTo(map);
+  destLayer.addTo(map);destDet.addTo(map);destBusL.addTo(map);layoutMerge();
   destSig='';destTick();
 }
 function howHtml(x,r){
@@ -1111,7 +1171,7 @@ function howHtml(x,r){
   const cl=v=>`${r[9]==='e'?'cerca das ':'às '}<b>${fmt(v)}</b>${rg(v,mL)}`;
   const nt=`<p class="cert ${certOf(r)}">${certTxt(r)}</p>`;
   if(dst.dir==='i')return `<ol class="how"><li><span>1</span><div>O Interface sai do ${pk} às <b>${fmt(r[6])}</b></div></li>`
-    +`<li><span>2</span><div>Sai em <b>${X}</b> ${ca(r[0])}${r[3]>0?` e caminha <b>${r[3]} m</b>`:`, sem ter de andar`}</div></li>`
+    +`<li><span>2</span><div>Sai em <b>${X}</b> ${ca(r[0])}${r[3]>0?` e caminha <b>${r[3]} m</b>`:` sem ter de andar`}</div></li>`
     +`<li><span>3</span><div>Apanha a linha ${ln} ${cl(tr[1])} (espera ${r[2]} min) para ${dn}</div></li></ol>${nt}`;
   return `<ol class="how"><li><span>1</span><div>A linha ${ln} sai de ${dn} às <b>${fmt(tr[1])}</b></div></li>`
     +`<li><span>2</span><div>Chega a <b>${g.hn||'paragem'}</b> ${cl(tr[2])} ${r[3]>0?` e caminha <b>${r[3]} m</b> até ${X}`:` (a mesma paragem do Interface)`}</div></li>`
@@ -1123,12 +1183,12 @@ function certTxt(r){
   const y=r[9]==='g'?'ponto de horário da linha '+(r[1]):r[9]==='c'?'hora prevista confirmada nos relatórios da TUB':'hora estimada a partir do GTFS (não é ponto de horário)';
   const i=r[10]==='c'?'hora prevista confirmada nos relatórios da TUB':'hora estimada pela distância entre os pontos de horário';
   const ap='';
-  return `<b>Certeza das horas.</b> Linha ${r[1]}: ${y}. Interface: ${i}.${ap}${r[2]>10?' <b>Espera longa:</b> '+r[2]+' min, sem ter de andar até outra paragem.':''}`;
+  return `<b>Certeza das horas.</b> Linha ${r[1]}: ${y}. Interface: ${i}.${ap}`;
 }
 function rowBtn(x,r,i){
   const on=dst.row===i,tr=tOf(x,r);
   const a=dst.dir==='i'?`<b>${fmt(r[6])}</b> sai do ${PARK[dst.park]}<em>→</em><b>${fmt(tr[1])}</b> parte a linha ${r[1]}`:`cerca das <b>${fmt(r[0])}</b> parte o Interface<em>→</em>chega às <b>${fmt(r[6])}</b>`;
-  return `<li><button type="button" class="drow${on?' on':''}" data-r="${i}"><span>${a}</span><small>espera ${r[2]} min · ${r[3]} m a pé · ${dst.dir==='i'?'sai em ':'apanha em '}${pxn(r[4])}${r[2]>10?' · <i class="ct ap">espera longa</i>':''}${certOf(r).startsWith('ok')?'':' · <i class="ct es">hora estimada</i>'}</small></button></li>`;
+  return `<li><button type="button" class="drow${on?' on':''}" data-r="${i}"><span>${a}</span><small>espera ${r[2]} min · ${r[3]} m a pé · ${dst.dir==='i'?'sai em ':'apanha em '}${pxn(r[4])}${certOf(r).startsWith('ok')?'':' · <i class="ct es">hora estimada</i>'}</small></button></li>`;
 }
 function destTick(){
   const x=cur();
@@ -1171,19 +1231,19 @@ function destBanner(x){
   const r=x?curRow():null;
   if(!r){el.classList.add('hidden');el.dataset.s='';return}
   const tr=tOf(x,r),t=state.t,ida=dst.dir==='i',L0=gOf(x,r).l;
-  const rem=v=>{const m=Math.ceil(v-t-1e-6);return m<=0?'agora':'em '+m+' min'};
+  const cam=r[3]>0?`Caminhada de ${r[3]} m`:'Sem caminhada',rem=v=>{const m=Math.ceil(v-t-1e-6);return m<=0?'agora':'em '+m+' min'};
   const ln=`<b style="color:${LCOL}">linha ${L0}</b>`;
   let a;
   if(ida){
     const dep=tr[1];
     a=t<r[6]?`O Interface sai do ${PARK[dst.park]} às <b>${fmt(r[6])}</b> (${rem(r[6])})`
      :t<r[0]?`O Interface está a caminho de ${pxn(r[4])} · chega cerca das <b>${fmt(r[0])}</b>`
-     :t<dep?`Caminhada de ${r[3]} m · ${ln} parte às <b>${fmt(dep)}</b> (${rem(dep)})`
+     :t<dep?`${cam} · ${ln} parte às <b>${fmt(dep)}</b> (${rem(dep)})`
      :t<tr[2]?`${ln} a caminho de ${dnome(x)}`:`${ln} chegou a ${dnome(x)}`;
   }else{
     const arr=tr[2];
     a=t<arr?`${ln} a caminho do centro · chega às <b>${fmt(arr)}</b> (${rem(arr)})`
-     :t<r[0]?`Caminhada de ${r[3]} m · o Interface parte cerca das <b>${fmt(r[0])}</b>`
+     :t<r[0]?`${cam} · o Interface parte cerca das <b>${fmt(r[0])}</b>`
      :t<r[6]?`O Interface segue para o ${PARK[dst.park]} · chega às <b>${fmt(r[6])}</b>`:`O Interface chegou ao ${PARK[dst.park]}`;
   }
   const s=`<small>${dnome(x)} · espera ${r[2]} min · ${r[3]} m a pé</small>${a}<button type="button" class="dview" data-view="1">${dst.stage?'Ver a linha toda':'Aproximar ao transbordo'}</button>`;
@@ -1199,7 +1259,7 @@ function destDetail(x){
   const mx=Math.max(...rows.map(r=>r[3]));
   return `<div class="dsel">${sw}<div class="dlines">${chips}</div><div class="dhow" id="lhow"></div>`
     +`<p class="dsum">${rows.length} ligações no dia. Clica numa para a ver no mapa.</p><ul class="lnext lscroll" id="llist">${all}</ul>`
-    +`<details class="dhelp"><summary>Como funciona</summary><p class="dnote">Espera de 5 a 10 min, com a caminhada (sem ter de andar, até 15 min) (80 m/min, até ${mx} m pelas ruas) já incluída. Só os pontos de horário têm hora garantida. Nas restantes paragens a hora é do GTFS (linhas) ou estimada pela distância entre pontos de horário (Interface), e aparece como «cerca das». Quando a hora coincide com uma hora prevista nos relatórios da TUB, aparece como «às». Ligações cuja hora se afasta mais de 3 min da interpolação por distância foram retiradas. As margens («em 9 de 10 dias») vêm dos relatórios de pontualidade da TUB (dias úteis de 2026, sem desvios acima de 30 min): medem o desvio da hora real face à prevista nos pontos de controlo de cada linha, e aplicam-se à hora de cada ligação. O Interface usa as linhas 05 e 95. Dia útil de referência: 29/09/2026.</p></details></div>`;
+    +`<details class="dhelp"><summary>Como funciona</summary><p class="dnote">Espera de 5 a 10 min, já com a caminhada (80 m/min); sem ter de andar, até 15 min. Só os pontos de horário têm hora garantida. Nas outras paragens a hora é estimada («cerca das») e mostra a margem real de pontualidade da TUB (9 em cada 10 dias). Dia útil de referência: 29/09/2026.</p></details></div>`;
 }
 function renderDest(){
   const el=$('tDest');
@@ -1210,11 +1270,11 @@ function renderDest(){
     const lin=x.lin.slice(0,6).map(l=>`<i>${l}</i>`).join('');
     return `<button type="button" class="dc${nil?' nil':''}" data-d="${i}" aria-pressed="${dst.sel===i}"><span class="dic"><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg></span>`
       +`<span class="dtx"><b>${dnome(x)}</b><small>${dtipo(x)}</small>${lin&&!nil?`<span class="dli">Linhas ${lin}</span>`:''}</span>`
-      +`<span class="dst">${nil?'sem ligação<br>a partir daqui':`<em>Ida ${pa}%</em><em>Volta ${pb}%</em>`}</span></button>`+(dst.sel===i?destDetail(x):'');
+      +`<span class="dst">${nil?'sem ligação<br>a partir daqui':''}</span></button>`+(dst.sel===i?destDetail(x):'');
   }).join('');
   el.innerHTML=`<p class="dintro"><b>Nem toda a gente vai ao centro.</b> Deixe o carro no Estádio ou no Minho Center, siga no Interface e mude de linha para chegar a estes destinos.</p>`
     +`<div class="dpark" id="dpark" role="group" aria-label="Onde deixa o carro"><span>Deixo o carro no</span><button type="button" data-p="e" aria-pressed="${dst.park==='e'}">Estádio</button><button type="button" data-p="m" aria-pressed="${dst.park==='m'}">Minho Center</button></div>`
-    +`<div class="dlist">${cards}</div><p class="dnote">Ida e Volta: parte das viagens do Interface que têm ligação em 10 min ou menos. Dia útil de referência: 29/09/2026.</p>`;
+    +`<div class="dlist">${cards}</div><p class="dnote">Dia útil de referência: 29/09/2026.</p>`;
   el.querySelectorAll('.lscroll').forEach((u,i)=>{if(sc[i])u.scrollTop=sc[i]});
   destSig='';
 }
